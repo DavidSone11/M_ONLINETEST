@@ -42,7 +42,7 @@
                         <div class="cell"></div>
                         <div class="cell"></div>
                         <div class="cell">
-                            <input type="text" class="input-small" id="email" ng-keyup="getComments()" ng-model="searchemail">
+                            <input type="text" placeholder="enter Email" class="form-control input-sm" ng-model-options="{debounce: 1000}" id="email" ng-model="query.email">
                         </div>
                         <div class="cell"></div>
                     </div>

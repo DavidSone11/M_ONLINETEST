@@ -1,9 +1,30 @@
 var app = angular.module("myApp", []);
-app.controller('usercontroller', function ($scope, $http) {
+app.controller('usercontroller', function ($scope, $http, $timeout) {
 
 
     $scope.comments = [];
     $scope.selectedOJBComments = {};
+
+    $scope.query = {
+        email: ""
+    }
+
+    $scope.$watch('query', function (tmpStr) {
+        if (!tmpStr || tmpStr.length == 0)
+            return 0;
+
+        if (tmpStr === $scope.query.email) {
+            $timeout(function () {
+                $http.get("https://jsonplaceholder.typicode.com/comments?email=" + tmpStr).then(function successCallback(response) {
+                    $scope.comments = response.data;
+                }, function errorCallBack(error) {
+                    console.log("server not responding ", error);
+                });
+            }, 1000);
+        }
+
+
+    }, true);
 
 
     $scope.getComments = function () {
@@ -13,19 +34,20 @@ app.controller('usercontroller', function ($scope, $http) {
             }, function errorCallBack(error) {
                 console.log("server not responding ", error);
             });
-
-        } else {
-
-            $http.get("https://jsonplaceholder.typicode.com/comments?email=" + $scope.searchemail).then(function successCallback(response) {
-                $scope.comments = response.data;
-            }, function errorCallBack(error) {
-                console.log("server not responding ", error);
-            });
         }
+
+        // else {
+
+        //     $http.get("https://jsonplaceholder.typicode.com/comments?email=" + $scope.searchemail).then(function successCallback(response) {
+        //         $scope.comments = response.data;
+        //     }, function errorCallBack(error) {
+        //         console.log("server not responding ", error);
+        //     });
+        // }
     }
 
     $scope.getComments();
-    
+
     $scope.selectedComments = function (com) {
 
         $scope.selectedOJBComments = com;
