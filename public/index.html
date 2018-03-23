@@ -15,34 +15,50 @@
     <form id="form" role="form">
 
 
-        <div class="table">
-            <div class="table-row header green">
-                <div class="cell">POST ID</div>
-                <div class="cell">ID</div>
-                <div class="cell">NAME</div>
-                <div class="cell">EMAIL</div>
-                <div class="cell">BODY</div>
-            </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">SELECED COMMENTS</div>
+            <div class="panel-body">
+                {{selectedOJBComments.id}} {{selectedOJBComments.postid}} {{selectedOJBComments.name}} {{selectedOJBComments.email}} {{selectedOJBComments.body}}
 
-            <div class="table-row header nocolor">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell">
-                    <input type="text" class="input-small" id="email" ng-keyup="getComments()" ng-model="searchemail">
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Panel Heading</div>
+            <div class="panel-body">
+                <div class="table">
+                    <div class="table-row header green">
+                        <div class="cell">ID</div>
+                        <div class="cell">POST ID</div>
+                        
+                        <div class="cell">NAME</div>
+                        <div class="cell">EMAIL</div>
+                        <div class="cell">BODY</div>
+                    </div>
+
+                    <div class="table-row header nocolor">
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell">
+                            <input type="text" class="input-small" id="email" ng-keyup="getComments()" ng-model="searchemail">
+                        </div>
+                        <div class="cell"></div>
+                    </div>
+
+                    <div class="table-row" ng-repeat="com in comments" ng-click="selectedComments(com)">
+
+                        <div class="cell">{{com.id}}</div>
+                        <div class="cell">{{com.postId}}</div>
+
+                        <div class="cell">{{com.name}}</div>
+                        <div class="cell">{{com.email}}</div>
+                        <div class="cell">{{com.body}}</div>
+                    </div>
+
                 </div>
-                <div class="cell"></div>
             </div>
-
-            <div class="table-row" ng-repeat="com in comments">
-
-                <div class="cell">{{com.postId}}</div>
-                <div class="cell">{{com.id}}</div>
-                <div class="cell">{{com.name}}</div>
-                <div class="cell">{{com.email}}</div>
-                <div class="cell">{{com.body}}</div>
-            </div>
-
         </div>
     </form>
 </body>
