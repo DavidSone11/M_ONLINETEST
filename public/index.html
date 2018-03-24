@@ -27,37 +27,43 @@
         <div class="panel panel-default">
             <div class="panel-heading">Panel Heading</div>
             <div class="panel-body">
-                <div class="table">
-                    <div class="table-row header green">
-                        <div class="cell">ID</div>
-                        <div class="cell">POST ID</div>
-                        
-                        <div class="cell">NAME</div>
-                        <div class="cell">EMAIL</div>
-                        <div class="cell">BODY</div>
-                    </div>
 
-                    <div class="table-row header nocolor">
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell">
-                            <input type="text" placeholder="enter Email" class="form-control input-sm" ng-model-options="{debounce: 1000}" id="email" ng-model="query.email">
-                        </div>
-                        <div class="cell"></div>
-                    </div>
 
-                    <div class="table-row" ng-repeat="com in comments" ng-click="selectedComments(com)">
+                    <table class="table">
+                            <thead>
+                              <tr>
+                                    <th>ID</th>
+                                    <th>POST ID</th>
+                                    
+                                    <th>NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>BODY</th>
+                                    
+                              </tr>
 
-                        <div class="cell">{{com.id}}</div>
-                        <div class="cell">{{com.postId}}</div>
+                               <tr>
+                                   <td></td>
+                                   <td><input type="text" placeholder="enter Email" class="form-control input-sm" ng-model-options="{debounce: 1000}" id="email" ng-model="query.email" st-ratio="120"></td>
+                                   <td><input type="text" placeholder="enter Email" class="form-control input-sm" ng-model-options="{debounce: 1000}" id="email" ng-model="query.email" st-ratio="120"></td>
+                                   <td></td>
+                                   <td></td>
+                                   <td></td>
+                               </tr>
 
-                        <div class="cell">{{com.name}}</div>
-                        <div class="cell">{{com.email}}</div>
-                        <div class="cell">{{com.body}}</div>
-                    </div>
-
-                </div>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="com in comments" ng-click="selectedComments(com)">
+                                <td>{{com.id}}</td>
+                                <td>{{com.postid}}</td>
+                                <td>{{com.name}}</td>
+                                <td>{{com.email}}/td>
+                                <td>{{com.body}}</td>
+                                
+                              </tr>
+                            </tbody>
+                          </table>
+                
+              
             </div>
         </div>
     </form>

@@ -23,7 +23,7 @@ app.controller('usercontroller', function ($scope, $http, $timeout) {
             }, 1000);
         }
 
-
+        $scope.getComments();
     }, true);
 
 
@@ -56,4 +56,16 @@ app.controller('usercontroller', function ($scope, $http, $timeout) {
 
 
 
+});
+
+app.directive("stRatio",function () {
+
+    return {
+        restrict : 'EA',   // Restrict EA: only matches Element name
+        link: function (scope, element, attr) {
+            var ratio = +(attr.stRatio);
+            element.css('width', ratio + '%');
+
+        }
+    }
 });
